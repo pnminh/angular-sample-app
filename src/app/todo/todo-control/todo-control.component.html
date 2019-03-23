@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-12">
+    <form>
+      <div class="row form-group">
+        <label for="addEditItem" class="col-sm-2 col-form-label"
+          >Add or Edit item:</label
+        >
+        <div class="col-sm-8">
+          <input type="text" id="addEditItem" class="form-control" [(ngModel)]="description" name="description"/>
+        </div>
+        <button class="btn btn-primary col-sm-2" (click)="addOrDelete()" >Add</button>
+      </div>
+    </form>
+  </div>
+</div>

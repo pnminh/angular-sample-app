@@ -17,6 +17,8 @@ import { TodoControlComponent } from './todo/todo-control/todo-control.component
 import { LocalRefComponent } from './local-ref/local-ref.component';
 import { NgContentRefComponent } from './ng-content-ref/ng-content-ref.component';
 import { NgContentRefChildComponent } from './ng-content-ref/ng-content-ref-child/ng-content-ref-child.component';
+import { CycleHooksComponent } from './cycle-hooks/cycle-hooks.component';
+import { CycleHookChildComponent } from './cycle-hooks/cycle-hook-child/cycle-hook-child.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { NgContentRefChildComponent } from './ng-content-ref/ng-content-ref-chil
     TodoControlComponent,
     LocalRefComponent,
     NgContentRefComponent,
-    NgContentRefChildComponent
+    NgContentRefChildComponent,
+    CycleHooksComponent,
+    CycleHookChildComponent
   ],
   imports: [
     BrowserModule,

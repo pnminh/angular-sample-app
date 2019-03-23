@@ -1,0 +1,29 @@
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-6">
+      <h1 *ngIf="!isTitleEdit; else changeTitleElement">{{ title }}</h1>
+      <ng-template #changeTitleElement>
+        <input type="text" [(ngModel)]="title" (input)="changeTitle($event)" />
+      </ng-template>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-primary" (click)="onChangeTitle()">
+        {{ buttonTitleStatus }}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 *ngIf="!isEdit; else changeDesc">{{ description }}</h3>
+      <ng-template #changeDesc>
+        <input type="text" [(ngModel)]="description" />
+      </ng-template>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-primary" (click)="onChangeDescription()">
+        {{ buttonStatus }}
+      </button>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</div>

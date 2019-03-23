@@ -1,0 +1,14 @@
+<input
+  type="text"
+  #changeTestText
+  (input)="getChangeTestText(changeTestText)"
+/>
+<!-- <button class="btn btn-primary" (click)="getChangeTestText(changeTestText)" >Click to test change</button> -->
+<div [innerText]="displayedText"></div>
+<button class="btn btn-secondary" (click)="addBook()" >Add book</button>
+<button class="btn btn-secondary" (click)="deleteBook()" >Delete book</button>
+<ul class="list-group-item list-group-item-success" *ngFor="let book of books">
+    <app-cycle-hook-child [title]="book.title" [description]="book.description" (titleChange)="book.title = $event" class="row">
+      <h4 #contentChildElement>{{book.note}}</h4>
+    </app-cycle-hook-child>
+  </ul>

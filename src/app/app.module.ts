@@ -15,6 +15,8 @@ import { TodoComponent } from './todo/todo.component';
 import { TodoItemComponent } from './todo/todo-item/todo-item.component';
 import { TodoControlComponent } from './todo/todo-control/todo-control.component';
 import { LocalRefComponent } from './local-ref/local-ref.component';
+import { NgContentRefComponent } from './ng-content-ref/ng-content-ref.component';
+import { NgContentRefChildComponent } from './ng-content-ref/ng-content-ref-child/ng-content-ref-child.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { LocalRefComponent } from './local-ref/local-ref.component';
     TodoComponent,
     TodoItemComponent,
     TodoControlComponent,
-    LocalRefComponent
+    LocalRefComponent,
+    NgContentRefComponent,
+    NgContentRefChildComponent
   ],
   imports: [
     BrowserModule,

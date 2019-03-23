@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      {{ "hello " + serverId + ",status is " + getServerStatus() }}
+    </div>
+  </div>
+</div>
+<!-- prop and event binding bindind -->
+<button
+  class="btn btn-primary"
+  [disabled]="!allowAdd"
+  (click)="onServerAdded()"
+>
+  Add new Item
+</button>
+<div [innerText]="serverAddedStatus"></div>
+<input type="text" class="form-control" (input)="onServerNameAdded($event)" />
+<div>{{ "String interpolation: " + serverName }}</div>
+<!-- two way binding -->
+<input type="text" [(ngModel)]="twoWayServerName" />
+<div>{{ "String interpolation for 2 way binding:" + twoWayServerName }}</div>
+
+<button class="btn btn-secondary form-control" (click)="onClickToggleButton()">
+  Click to toggle PLAY STOP
+  <i class="fa fa-play" *ngIf="isPlaying; else stop"></i>
+  <ng-template #stop>
+    <i class="fa fa-stop"></i>
+  </ng-template>
+</button>
+<button (click)="getColor()" [ngStyle]="styleObj" class="form-control">Click this to change color background</button>
+<button  (click)="changeClass()" [ngClass]="classObj">Click here to switch between primary and secondary button style</button>
+

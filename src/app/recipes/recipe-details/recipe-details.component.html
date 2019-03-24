@@ -1,34 +1,43 @@
 <div class="row">
-    <div class="col-md-12">
-      <img [src]="chosenRecipe.imagePath" alt="" style="max-height: 300px" class="img-responsive" />
+  <div class="col-md-12">
+    <img
+      [src]="chosenRecipe.imagePath"
+      alt=""
+      style="max-height: 300px"
+      class="img-responsive"
+    />
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h1>{{ chosenRecipe.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div [appDropdown] class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle">
+        Manage Recipe <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" style="cursor: pointer;" (click)="addIngredients(chosenRecipe.ingredients)" >To Shopping List</a></li>
+        <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
+        <li><a class="dropdown-item" href="#">Delete Recipe</a></li>
+      </ul>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h1>{{ chosenRecipe.name }}</h1>
-    </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{ chosenRecipe.description }}
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div [appDropdown] class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle">
-          Manage Recipe <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Shopping List</a></li>
-          <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
-          <li><a class="dropdown-item" href="#">Delete Recipe</a></li>
-        </ul>
-      </div>
-    </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ingredient of chosenRecipe.ingredients">
+        {{ ingredient.name }}({{ ingredient.amount }})
+      </li>
+    </ul>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      {{ chosenRecipe.description }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      Ingredients
-    </div>
-  </div>
+</div>

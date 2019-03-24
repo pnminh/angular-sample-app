@@ -1,3 +1,4 @@
+import { RecipeService } from './shared/recipe.service';
 import { BackgroupStyleDirective } from './directive-test/background-style.directive';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -54,7 +55,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,10 @@
 <hr />
 <div class="row">
   <div class="col-12">
-      <app-recipe-item *ngFor="let recipe of recipes" [recipe]=recipe (click)="chooseRecipe(recipe)" ></app-recipe-item>
+    <app-recipe-item
+      *ngFor="let recipe of recipes; index as id"
+      [recipe]="recipe"
+      (click)="chooseRecipe(id)"
+    ></app-recipe-item>
   </div>
 </div>

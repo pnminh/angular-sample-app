@@ -1,3 +1,14 @@
 <div>
   <h1 backgroundStyle>Hello From Directive</h1>
+  <!-- use directive name as input:appAdvancedBackgroundStyle
+  we can use directive prop with no [],eg defaultColor="white"
+  but this can be confusing since it's not a normal attribute
+  -->
+  <h1 [appAdvancedBackgroundStyle]="'yellow'" [defaultColor] = "'white'">This is an advanced directive feature</h1>
+  <!-- if the structural directive is inside a normal element, we use *directiveName -->
+  <h2 *appRepeat="3">This should repeat 3 times</h2>
+  <!-- if the structural directive is inside ng-template element, we use [directiveName] -->
+  <ng-template [appRepeat]="2">
+    <h3>This should repeat twice</h3>
+  </ng-template>
 </div>

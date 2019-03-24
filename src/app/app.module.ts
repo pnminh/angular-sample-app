@@ -21,6 +21,8 @@ import { NgContentRefChildComponent } from './ng-content-ref/ng-content-ref-chil
 import { CycleHooksComponent } from './cycle-hooks/cycle-hooks.component';
 import { CycleHookChildComponent } from './cycle-hooks/cycle-hook-child/cycle-hook-child.component';
 import { DirectiveTestComponent } from './directive-test/directive-test.component';
+import { AdvancedBackgroundStyleDirective } from './directive-test/advanced-background-style.directive';
+import { RepeatDirective } from './directive-test/repeat.directive';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { DirectiveTestComponent } from './directive-test/directive-test.componen
     CycleHooksComponent,
     CycleHookChildComponent,
     DirectiveTestComponent,
-    BackgroupStyleDirective
+    BackgroupStyleDirective,
+    AdvancedBackgroundStyleDirective,
+    RepeatDirective
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,7 @@ import { CycleHookChildComponent } from './cycle-hooks/cycle-hook-child/cycle-ho
 import { DirectiveTestComponent } from './directive-test/directive-test.component';
 import { AdvancedBackgroundStyleDirective } from './directive-test/advanced-background-style.directive';
 import { RepeatDirective } from './directive-test/repeat.directive';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { RepeatDirective } from './directive-test/repeat.directive';
     DirectiveTestComponent,
     BackgroupStyleDirective,
     AdvancedBackgroundStyleDirective,
-    RepeatDirective
+    RepeatDirective,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

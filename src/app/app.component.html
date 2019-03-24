@@ -11,13 +11,13 @@
 </div> -->
 <!-- <app-local-ref></app-local-ref> -->
 <!-- <app-ng-content-ref> </app-ng-content-ref> -->
-<app-cycle-hooks></app-cycle-hooks>
-<!-- <app-header></app-header>
+<!-- <app-cycle-hooks></app-cycle-hooks> -->
+<app-header (selectEmitter)="selectPage($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-        <app-recipes></app-recipes>
-        <app-shopping-list></app-shopping-list>
+        <app-recipes *ngIf="isRecipesPage" ></app-recipes>
+        <app-shopping-list *ngIf="!isRecipesPage" ></app-shopping-list>
     </div>
   </div>
-</div> -->
+</div>

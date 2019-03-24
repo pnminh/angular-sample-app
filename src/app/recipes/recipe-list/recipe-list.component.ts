@@ -1,5 +1,5 @@
 import { Recipe } from "./recipe-item/recipe.model";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-recipe-list",
@@ -7,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./recipe-list.component.css"]
 })
 export class RecipeListComponent implements OnInit {
+  @Output() chosenRecipe = new EventEmitter<Recipe>();
   recipes: Recipe[] = [
     new Recipe(
       "A Test Recipe",
@@ -14,7 +15,13 @@ export class RecipeListComponent implements OnInit {
       "https://www.tasteofhome.com/wp-content/uploads/2017/10/Healthier-than-Egg-Rolls_EXPS_SDON17_55166_C06_23_6b-696x696.jpg"
     )
   ];
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    /* this.chosenRecipe.emit(this.recipes[0]) */
+  }
+  chooseRecipe(chosenRecipe: Recipe) {
+    this.chosenRecipe.emit(chosenRecipe);
+  }
 }

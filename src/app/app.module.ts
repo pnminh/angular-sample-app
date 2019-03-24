@@ -1,3 +1,4 @@
+import { BackgroupStyleDirective } from './directive-test/background-style.directive';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -19,6 +20,7 @@ import { NgContentRefComponent } from './ng-content-ref/ng-content-ref.component
 import { NgContentRefChildComponent } from './ng-content-ref/ng-content-ref-child/ng-content-ref-child.component';
 import { CycleHooksComponent } from './cycle-hooks/cycle-hooks.component';
 import { CycleHookChildComponent } from './cycle-hooks/cycle-hook-child/cycle-hook-child.component';
+import { DirectiveTestComponent } from './directive-test/directive-test.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CycleHookChildComponent } from './cycle-hooks/cycle-hook-child/cycle-ho
     NgContentRefComponent,
     NgContentRefChildComponent,
     CycleHooksComponent,
-    CycleHookChildComponent
+    CycleHookChildComponent,
+    DirectiveTestComponent,
+    BackgroupStyleDirective
   ],
   imports: [
     BrowserModule,

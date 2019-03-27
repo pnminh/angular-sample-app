@@ -13,12 +13,13 @@
 <!-- <app-ng-content-ref> </app-ng-content-ref> -->
 <!-- <app-cycle-hooks></app-cycle-hooks> -->
 <!-- <app-directive-test></app-directive-test> -->
-<app-header (selectEmitter)="selectPage($event)"></app-header>
-<div class="container">
+<app-header></app-header>
+<div class="container my-3">
   <div class="row">
     <div class="col-md-12">
-        <app-recipes *ngIf="isRecipesPage" ></app-recipes>
-        <app-shopping-list *ngIf="!isRecipesPage" ></app-shopping-list>
+        <!-- <app-recipes *ngIf="isRecipesPage" ></app-recipes>
+        <app-shopping-list *ngIf="!isRecipesPage" ></app-shopping-list> -->
+        <router-outlet></router-outlet>
     </div>
   </div>
 </div>

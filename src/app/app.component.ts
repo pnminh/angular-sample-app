@@ -7,9 +7,4 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "safari-course-app";
-  isRecipesPage = true;
-  selectPage(page) {
-    if (page == "recipes") this.isRecipesPage = true;
-    else this.isRecipesPage = false;
-  }
 }

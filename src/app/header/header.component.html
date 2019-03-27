@@ -1,22 +1,38 @@
-<nav class="navbar navbar-expand-md navbar-secondary bg-light">
-<div class="container-fluid">
-  <div class="navbar-header">
-    <a href="#" class="navbar-brand">Recipe Book</a>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">Recipe Book</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="'/recipes'"
+            [routerLinkActive]="'active'"
+            >Recipes</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="'/shopping-list'"
+            [routerLinkActive]="'active'"
+            >Shopping List</a
+          >
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown nav-item" [appDropdown]>
+          <a href="#" class="nav-link dropdown-toggle" role="button"
+            >Manage <span class="caret"></span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Save Data</a></li>
+            <li><a class="dropdown-item" href="#">Fetch Data</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item"><a class="nav-link" href="#" (click)="selectPage('recipes')" >Recipes</a></li>
-      <li class="nav-item"><a class="nav-link" href="#" (click)="selectPage('shoppingList')">Shopping List</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown nav-item" [appDropdown]>
-        <a href="#" class="nav-link dropdown-toggle" role="button">Manage <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Save Data</a></li>
-          <li><a class="dropdown-item" href="#">Fetch Data</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
 </nav>

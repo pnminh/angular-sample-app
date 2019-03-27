@@ -3,6 +3,8 @@
   <!-- use directive name as input:appAdvancedBackgroundStyle
   we can use directive prop with no [],eg defaultColor="white"
   but this can be confusing since it's not a normal attribute
+  note:directive with no [] accepts string, with bracket it can accept different types
+  therefore [defaultColor] = "'white'" but not [defaultColor] = "white"
   -->
   <h1 [appAdvancedBackgroundStyle]="'yellow'" [defaultColor] = "'white'">This is an advanced directive feature</h1>
   <!-- if the structural directive is inside a normal element, we use *directiveName -->

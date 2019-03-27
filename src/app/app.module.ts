@@ -25,6 +25,9 @@ import { DirectiveTestComponent } from './directive-test/directive-test.componen
 import { AdvancedBackgroundStyleDirective } from './directive-test/advanced-background-style.directive';
 import { RepeatDirective } from './directive-test/repeat.directive';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { RoutingModule } from './routing/routing.module';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -49,11 +52,14 @@ import { DropdownDirective } from './shared/dropdown.directive';
     BackgroupStyleDirective,
     AdvancedBackgroundStyleDirective,
     RepeatDirective,
-    DropdownDirective
+    DropdownDirective,
+    RecipeStartComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RoutingModule
   ],
   providers: [RecipeService],
   bootstrap: [AppComponent]

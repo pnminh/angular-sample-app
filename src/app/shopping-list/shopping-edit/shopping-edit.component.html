@@ -1,21 +1,21 @@
 <div class="row">
   <div class="col-md-12">
-    <form>
+    <form (ngSubmit)="addItem()" [formGroup]="shoppingListForm">
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" class="form-control" #nameInput/>
+          <input type="text" id="name" class="form-control" formControlName="name"/>
         </div>
         <div class="col-sm-2 form-group">
           <label for="amount">Amount</label>
-          <input type="text" id="amount" class="form-control" #amountInput/>
+          <input type="text" id="amount" class="form-control" formControlName="amount"/>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-success" type="button" (click)="addItem(nameInput,amountInput)" >Add</button>
-          <button class="btn btn-danger" type="button" (click)="deleteItem()" >Delete</button>
-          <button class="btn btn-primary" type="button" (click)="nameInput.value ='';amountInput.value=''">Clear</button>
+          <button class="btn btn-success" type="submit" [disabled]=!isFormValid>{{isEditing?'Update':'Add'}}</button>
+          <button class="btn btn-danger" type="button" [disabled]="!isEditing" (click)="deleteItem()" >Delete</button>
+          <button class="btn btn-primary" type="button" (click)=clearInputs()>Clear</button>
         </div>
       </div>
     </form>

@@ -10,9 +10,13 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 })
 export class ShoppingListComponent implements OnInit {
   ingredients$: Observable<Ingredient[]>;
+  selectedIngredientId: number;
   constructor(private shoppingListService: ShoppingListService) {}
 
   ngOnInit() {
     this.ingredients$ = this.shoppingListService.getIngredients();
+  }
+  editIngredient(id: number) {
+    this.shoppingListService.onEditIngredientIdChange(id);
   }
 }

@@ -4,75 +4,88 @@
       <div class="card-body">
         <h4 class="card-title">Edit Recipe</h4>
         <div class="card-text">
-          <div class="form-group">
-            <button class="btn btn-success">Save</button>
-            <button class="btn btn-danger ml-1">Cancel</button>
-          </div>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              class="form-control"
-              placeholder="Enter recipe name"
-            />
-          </div>
-          <div class="form-group">
-            <label for="name">Image URL</label>
-            <input
-              type="text"
-              name="imageUrl"
-              id="imageUrl"
-              class="form-control"
-              placeholder="Enter recipe image url"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Image Preview</label>
-            <img
-              class="input-group"
-              src="https://pupswithchopsticks.com/wp-content/uploads/bun-bo-hue-done2-225x225.jpg"
-              alt=""
-            />
-          </div>
-          <div class="form-group">
-            <label for="name">Description</label>
-            <textarea
-              name="description"
-              id="description"
-              rows="5"
-              class="form-control"
-            >
-            </textarea>
-          </div>
-          <div class="form-group">
-            <label for="ingredient" class="form-label">Ingredient</label>
-            <div class="card bg-light mb-3" id="ingredient">
-              <div class="card-body row">
-                <div class="col-9 form-group">
-                  <label for="ingredientName">Name</label>
-                  <input
-                    type="text"
-                    name="ingredientName"
-                    id="ingredientName"
-                    class="form-control"
-                    placeholder="Ingredient name"
-                  />
-                </div>
-                <div class="col-3 form-group">
-                  <label for="ingredientAmount">Amount</label>
-                  <input
-                    type="text"
-                    name="ingredientAmount"
-                    id="ingredientAmount"
-                    class="form-control"
-                    placeholder="Amount"
-                  />
+          <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <button class="btn btn-success" type="submit" [disabled]="recipeForm.invalid">Save</button>
+              <button class="btn btn-danger ml-1" type="button" (click)="cancelAddEdit()" >Cancel</button>
+            </div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                placeholder="Enter recipe name"
+                formControlName="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Image URL</label>
+              <input
+                type="text"
+                name="imageUrl"
+                id="imageUrl"
+                class="form-control"
+                placeholder="Enter recipe image url"
+                formControlName="imagePath"
+              />
+            </div>
+            <div class="form-group" *ngIf="recipeForm.get('imagePath').value" >
+              <label class="form-label">Image Preview</label>
+              <img
+                class="input-group"
+                [src]="recipeForm.get('imagePath').value"
+                alt="Cannot load picture"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Description</label>
+              <textarea
+                name="description"
+                id="description"
+                rows="5"
+                class="form-control"
+                formControlName="description"
+              >
+              </textarea>
+            </div>
+            <div class="form-group" >
+              <label for="ingredient" class="form-label">Ingredients</label>
+              <div class="card bg-light mb-3" id="ingredients" formArray="ingredients">
+                <div class="card-body">
+                  <button class="btn btn-primary mb-3" type="button" (click)="addIngredient()" >Add</button>
+                  <div class="row" *ngFor="let ingredient of ingredientForm.controls;let id=index" [formGroup]="ingredient" >
+                    <div class="col-7 form-group">
+                      <input
+                        type="text"
+                        name="ingredientName"
+                        id="ingredientName"
+                        class="form-control"
+                        placeholder="Ingredient name"
+                        formControlName="name"
+                      />
+                    </div>
+                    <div class="col-5 form-group">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          name="ingredientAmount"
+                          id="ingredientAmount"
+                          class="form-control"
+                          placeholder="Amount"
+                          formControlName="amount"
+                        />
+                        <button class="btn btn-danger ml-4" type="button" (click)="deleteIngredient(id)" >
+                          X
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

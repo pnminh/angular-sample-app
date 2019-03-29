@@ -1,15 +1,19 @@
 <div class="row">
   <div class="col-12">
-    <button class="btn btn-success" [routerLink]="['/recipes','new']">New Recipe</button>
+    <button class="btn btn-success" [routerLink]="['/recipes', 'new']">
+      New Recipe
+    </button>
   </div>
 </div>
 <hr />
 <div class="row">
   <div class="col-12">
-    <app-recipe-item class=" my-3 list-group-item list-group-item-dark clearfix"
-      *ngFor="let recipe of recipes; index as id"
+    <app-recipe-item
+      class=" my-3 list-group-item list-group-item-dark clearfix"
+      *ngFor="let recipe of (recipes$ | async); index as id"
       [recipe]="recipe"
-      routerLink = "{{id}}" [routerLinkActive]="'active'"
+      routerLink="{{ id }}"
+      [routerLinkActive]="'active'"
     ></app-recipe-item>
   </div>
 </div>

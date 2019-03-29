@@ -1,5 +1,7 @@
-import { Recipe } from './../recipes/recipe-list/recipe-item/recipe.model';
-import { Ingredient } from './ingredient.model';
+import { Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
+import { Recipe } from "./../recipes/recipe-list/recipe-item/recipe.model";
+import { Ingredient } from "./ingredient.model";
 
 export class RecipeService {
   private recipes: Recipe[] = [
@@ -20,11 +22,23 @@ export class RecipeService {
       ]
     )
   ];
+  private recipes$: BehaviorSubject<Recipe[]> = new BehaviorSubject(
+    this.recipes
+  );
   constructor() {}
   getRecipe(id: number) {
-    return this.recipes.slice(id, id+1)[0];
+    return this.recipes.slice(id, id + 1)[0];
   }
-  getRecipes() {
-    return this.recipes.slice();
+  getRecipes(): Observable<Recipe[]> {
+    return this.recipes$.asObservable();
+  }
+  addRecipe(recipe: Recipe):number {
+    this.recipes.push(recipe);
+    this.recipes$.next(this.recipes);
+    return this.recipes.indexOf(recipe);
+  }
+  updateRecipe(id: number, recipe: Recipe) {
+    this.recipes[id] = recipe;
+    this.recipes$.next(this.recipes);
   }
 }

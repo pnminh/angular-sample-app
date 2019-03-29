@@ -2,12 +2,24 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Edit Recipe</h4>
+        <h4 class="card-title">{{ isEdit ? "Edit" : "New" }} Recipe</h4>
         <div class="card-text">
           <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <button class="btn btn-success" type="submit" [disabled]="recipeForm.invalid">Save</button>
-              <button class="btn btn-danger ml-1" type="button" (click)="cancelAddEdit()" >Cancel</button>
+              <button
+                class="btn btn-success"
+                type="submit"
+                [disabled]="recipeForm.invalid"
+              >
+                Save
+              </button>
+              <button
+                class="btn btn-danger ml-1"
+                type="button"
+                (click)="cancelAddEdit()"
+              >
+                Cancel
+              </button>
             </div>
             <div class="form-group">
               <label for="name">Name</label>
@@ -31,7 +43,7 @@
                 formControlName="imagePath"
               />
             </div>
-            <div class="form-group" *ngIf="recipeForm.get('imagePath').value" >
+            <div class="form-group" *ngIf="recipeForm.get('imagePath').value">
               <label class="form-label">Image Preview</label>
               <img
                 class="input-group"
@@ -50,12 +62,29 @@
               >
               </textarea>
             </div>
-            <div class="form-group" >
+            <div class="form-group">
               <label for="ingredient" class="form-label">Ingredients</label>
-              <div class="card bg-light mb-3" id="ingredients" formArray="ingredients">
+              <div
+                class="card bg-light mb-3"
+                id="ingredients"
+                formArray="ingredients"
+              >
                 <div class="card-body">
-                  <button class="btn btn-primary mb-3" type="button" (click)="addIngredient()" >Add</button>
-                  <div class="row" *ngFor="let ingredient of ingredientForm.controls;let id=index" [formGroup]="ingredient" >
+                  <button
+                    class="btn btn-primary mb-3"
+                    type="button"
+                    (click)="addIngredient()"
+                  >
+                    Add
+                  </button>
+                  <div
+                    class="row"
+                    *ngFor="
+                      let ingredient of ingredientForm.controls;
+                      let id = index
+                    "
+                    [formGroup]="ingredient"
+                  >
                     <div class="col-7 form-group">
                       <input
                         type="text"
@@ -76,7 +105,11 @@
                           placeholder="Amount"
                           formControlName="amount"
                         />
-                        <button class="btn btn-danger ml-4" type="button" (click)="deleteIngredient(id)" >
+                        <button
+                          class="btn btn-danger ml-4"
+                          type="button"
+                          (click)="deleteIngredient(id)"
+                        >
                           X
                         </button>
                       </div>

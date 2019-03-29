@@ -36,21 +36,23 @@ export class RecipeEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.isEdit = params.id ? true : false;
       this.recipeId = params.id;
-      const recipe = this.recipeService.getRecipe(this.recipeId);
-      this.recipeForm.setValue({
-        name: recipe.name,
-        description: recipe.description,
-        imagePath: recipe.imagePath,
-        ingredients: []
-      });
+      if (this.isEdit) {
+        const recipe = this.recipeService.getRecipe(this.recipeId);
+        this.recipeForm.setValue({
+          name: recipe.name,
+          description: recipe.description,
+          imagePath: recipe.imagePath,
+          ingredients: []
+        });
 
-      for (let ingredient of recipe.ingredients) {
-        (this.recipeForm.get("ingredients") as FormArray).push(
-          new FormGroup({
-            name: new FormControl(ingredient.name),
-            amount: new FormControl(ingredient.amount)
-          })
-        );
+        for (let ingredient of recipe.ingredients) {
+          (this.recipeForm.get("ingredients") as FormArray).push(
+            new FormGroup({
+              name: new FormControl(ingredient.name),
+              amount: new FormControl(ingredient.amount)
+            })
+          );
+        }
       }
     });
   }

@@ -1,0 +1,28 @@
+<p>{{ testString | shorten: "1":"10" }}</p>
+<div class="form-group">
+  <label for="search">Search meeting</label>
+  <input
+    type="text"
+    class="form-control"
+    name="search"
+    id="search"
+    placeholder="Meetings to search"
+    [(ngModel)]="searchTerm"
+  />
+  <button class="btn btn-primary" (click)="addMeeting()" >Add meeting</button>
+</div>
+<div class="container">
+  <div
+    class="row my-3"
+    *ngFor="let meeting of (meetings | appFilter:'name':searchTerm)"
+  >
+    <div class="card">
+      <div class="col-xs-12">
+        <div class="card-body">
+          <h3 class="card-title">{{ meeting.name }}</h3>
+          <p class="card-text">{{ meeting.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

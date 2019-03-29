@@ -1,3 +1,4 @@
+import { ShortenPipe } from './pipe-test/shorten.pipe';
 import { RecipeService } from './shared/recipe.service';
 import { BackgroupStyleDirective } from './directive-test/background-style.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +29,8 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { RoutingModule } from './routing/routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { PipeTestComponent } from './pipe-test/pipe-test.component';
+import { AppFilterPipe } from './pipe-test/app-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     RepeatDirective,
     DropdownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    PipeTestComponent,
+    ShortenPipe,
+    AppFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -18,10 +18,9 @@ export class RecipeService {
   }
   getRecipes(): Observable<Recipe[]> {
     if (this.recipes.length == 0) {
-      return this.loadRecipes();
-    } else {
-      return this.recipes$.asObservable();
+      this.loadRecipes();
     }
+    return this.recipes$.asObservable();
   }
   addRecipe(recipe: Recipe): number {
     this.recipes.push(recipe);
@@ -39,13 +38,12 @@ export class RecipeService {
   persistRecipes(): Observable<Response> {
     return this.dataStorageService.saveRecipes(this.recipes);
   }
-  loadRecipes(): Observable<Recipe[]> {
-    return this.dataStorageService.loadRecipes().pipe(
-      switchMap(recipes => {
+  loadRecipes(): void {
+    this.dataStorageService
+      .loadRecipes()
+      .subscribe((recipes: Recipe[]) => {
         this.recipes = recipes;
-        this.recipes$.next(this.recipes);
-        return this.recipes$;
-      })
-    );
+        this.recipes$.next(recipes);
+      });
   }
 }

@@ -7,11 +7,12 @@ import * as firebase from 'firebase';
 })
 export class AppComponent implements OnInit {
   title = "safari-course-app";
-
-  ngOnInit(){
+  constructor(){
     firebase.initializeApp({
       apiKey: "AIzaSyBBKmI08HF8paIIgsbreamZevzC_aosuDw",
     authDomain: "ng-recipe-b4231.firebaseapp.com",
     })
+  }
+  ngOnInit(){
   }
 }

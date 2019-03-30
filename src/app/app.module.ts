@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { RecipeService } from './shared/recipe.service';
 import { BackgroupStyleDirective } from './directive-test/background-style.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -61,6 +62,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     RoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpModule,
   ],
   providers: [RecipeService],
   bootstrap: [AppComponent]

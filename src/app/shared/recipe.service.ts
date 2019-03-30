@@ -17,7 +17,7 @@ export class RecipeService {
     return this.recipes.slice(id, id + 1)[0];
   }
   getRecipes(): Observable<Recipe[]> {
-    if (this.recipes.length == 0) {
+    if (this.recipes.length === 0) {
       this.loadRecipes();
     }
     return this.recipes$.asObservable();

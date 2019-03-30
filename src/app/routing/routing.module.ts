@@ -7,12 +7,14 @@ import { RecipeStartComponent } from "../recipes/recipe-start/recipe-start.compo
 import { RecipeDetailsComponent } from "./../recipes/recipe-details/recipe-details.component";
 import { RecipesComponent } from "./../recipes/recipes.component";
 import { ShoppingListComponent } from "./../shopping-list/shopping-list.component";
-import { SignupComponent } from '../auth/signup/signup.component';
+import { SignupComponent } from "../auth/signup/signup.component";
+import { AuthGuardService } from "../auth/auth-guard.service";
 
 const routes: Routes = [
   {
     path: "recipes",
     component: RecipesComponent,
+    canActivate: [AuthGuardService],
     data: { message: "Please select recipe to get details" },
     children: [
       {
@@ -29,6 +31,7 @@ const routes: Routes = [
   },
   {
     path: "shopping-list",
+    canActivate: [AuthGuardService],
     component: ShoppingListComponent
   },
   {

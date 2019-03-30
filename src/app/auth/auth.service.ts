@@ -1,15 +1,15 @@
-import { Router } from "@angular/router";
-import { User } from "./../../../../safari-course-route-app/src/app/model/user.model";
-import { pipe } from "@angular/core/src/render3";
-import { map, switchMap, catchError } from "rxjs/operators";
-import { Injectable } from "@angular/core";
-import * as firebase from "firebase";
-import { Observable, from, Subject, of } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import * as firebase from 'firebase';
+import { from, Observable, of, ReplaySubject } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  authStateChangedSubject = new Subject<firebase.User>();
+  authStateChangedSubject: ReplaySubject<firebase.User> = new ReplaySubject<
+    firebase.User
+  >(1);
   constructor(private router: Router) {
     firebase.auth().onAuthStateChanged(this.authStateChangedSubject);
   }
@@ -43,7 +43,6 @@ export class AuthService {
         if (user) {
           return from(user.getIdToken());
         } else {
-          //this.router.navigate(["/signin"]);
           return of(null);
         }
       })

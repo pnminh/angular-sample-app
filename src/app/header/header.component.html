@@ -40,7 +40,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <ng-container *ngIf="!(isAuthenticated$ | async);else logout">
+        <ng-container *ngIf="!(isAuthenticated$ | async); else logout">
           <li class="nav-item">
             <a
               class="nav-link"
@@ -59,13 +59,11 @@
           </li>
         </ng-container>
         <ng-template #logout>
-            <li class="nav-item">
-                <a
-                  class="nav-link"
-                  (click)="signout()"
-                  >Sign Out</a
-                >
-              </li>
+          <li class="nav-item">
+            <a style="cursor: pointer" class="nav-link" (click)="signout()"
+              >Sign Out</a
+            >
+          </li>
         </ng-template>
         <li class="dropdown nav-item" [appDropdown]>
           <a

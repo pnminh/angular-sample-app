@@ -24,7 +24,10 @@ export class SigninComponent implements OnInit {
   onSubmit() {
     this.authService
       .signIn(this.signinForm.value)
-      .then(response => this.router.navigate(["/recipes"]))
+      .then(response => {
+        console.log(response);
+        this.router.navigate(["/"]);
+      })
       .catch(err => console.log(err));
   }
 }

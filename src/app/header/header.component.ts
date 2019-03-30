@@ -24,4 +24,11 @@ export class HeaderComponent implements OnDestroy {
     this.saveRecipeSubscription.unsubscribe();
     this.loadRecipeSubscription.unsubscribe();
   }
+  toggleNav(collapsableEle: HTMLElement) {
+    if (collapsableEle.classList.contains("show")) {
+      collapsableEle.classList.remove("show");
+    } else {
+      collapsableEle.classList.add("show");
+    }
+  }
 }

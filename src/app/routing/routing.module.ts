@@ -1,3 +1,4 @@
+import { SigninComponent } from "./../auth/signin/signin.component";
 import { RecipeEditComponent } from "./../recipes/recipe-edit/recipe-edit.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
@@ -6,6 +7,7 @@ import { RecipeStartComponent } from "../recipes/recipe-start/recipe-start.compo
 import { RecipeDetailsComponent } from "./../recipes/recipe-details/recipe-details.component";
 import { RecipesComponent } from "./../recipes/recipes.component";
 import { ShoppingListComponent } from "./../shopping-list/shopping-list.component";
+import { SignupComponent } from '../auth/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,14 @@ const routes: Routes = [
   {
     path: "shopping-list",
     component: ShoppingListComponent
+  },
+  {
+    path: "signup",
+    component: SignupComponent
+  },
+  {
+    path: "signin",
+    component: SigninComponent
   },
   {
     path: "**",

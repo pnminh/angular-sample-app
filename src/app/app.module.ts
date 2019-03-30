@@ -29,6 +29,9 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { RoutingModule } from './routing/routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { ToggleDirective } from './shared/toggle.directive';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     RepeatDirective,
     DropdownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    SignupComponent,
+    SigninComponent,
+    ToggleDirective
   ],
   imports: [
     BrowserModule,

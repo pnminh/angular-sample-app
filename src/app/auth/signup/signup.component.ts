@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     this.authService
       .signUp(this.signupForm.value)
-      .then(response => this.router.navigate(["/recipes"]))
+      .then(response => this.router.navigate(["/"]))
       .catch(err => console.log(err));
   }
 }

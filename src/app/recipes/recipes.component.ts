@@ -13,5 +13,7 @@ export class RecipesComponent implements OnInit {
     private route: ActivatedRoute,
     private recipeService: RecipeService
   ) {}
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('RecipesComponent loaded')
+  }
 }

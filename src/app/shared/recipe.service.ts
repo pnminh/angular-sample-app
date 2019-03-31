@@ -1,10 +1,8 @@
-import { Injectable } from "@angular/core";
-import { Response } from "@angular/http";
-import { BehaviorSubject, Observable } from "rxjs";
-import { map, switchMap } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-import { DataStorageService } from "./../data-storage.service";
-import { Recipe } from "./../recipes/recipe-list/recipe-item/recipe.model";
+import { DataStorageService } from './../data-storage.service';
+import { Recipe } from './../recipes/recipe-list/recipe-item/recipe.model';
 
 @Injectable()
 export class RecipeService {
@@ -35,7 +33,7 @@ export class RecipeService {
     this.recipes.splice(id, 1);
     this.recipes$.next(this.recipes);
   }
-  persistRecipes(): Observable<Response> {
+  persistRecipes(): Observable<any> {
     return this.dataStorageService.saveRecipes(this.recipes);
   }
   loadRecipes(): void {

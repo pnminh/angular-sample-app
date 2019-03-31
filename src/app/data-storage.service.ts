@@ -1,10 +1,10 @@
-import { AuthService } from "./auth/auth.service";
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { HttpClient } from "@angular/common/http";
 import * as firebase from "firebase";
 import { from, Observable, of } from "rxjs";
-import { map, switchMap, take, mergeMap, merge } from "rxjs/operators";
+import { map, switchMap } from "rxjs/operators";
 
+import { AuthService } from "./auth/auth.service";
 import { Recipe } from "./recipes/recipe-list/recipe-item/recipe.model";
 
 @Injectable({
@@ -13,34 +13,44 @@ import { Recipe } from "./recipes/recipe-list/recipe-item/recipe.model";
 export class DataStorageService {
   private firebaseDbUrl = "https://ng-recipe-b4231.firebaseio.com";
   recipesCollectionName = "recipes";
-  constructor(private http: Http, private authService: AuthService) {}
-  saveRecipes(recipes: Recipe[]): Observable<Response> {
-    return from(firebase.auth().currentUser.getIdToken()).pipe(
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthService
+  ) {}
+  saveRecipes(recipes: Recipe[]): Observable<any> {
+    /* return from(firebase.auth().currentUser.getIdToken()).pipe(
       switchMap(token =>
-        this.http.put(
+        this.httpClient.put<any>(
           `${this.firebaseDbUrl}/${
             this.recipesCollectionName
           }.json?auth=${token}`,
           recipes
         )
       )
-    );
+    ); */
+    return this.httpClient.put<any>(
+      `${this.firebaseDbUrl}/${
+        this.recipesCollectionName
+      }.json`,
+      recipes
+    )
   }
   loadRecipes(): Observable<Recipe[]> {
-    return this.authService.getToken().pipe(
+    /* return this.authService.getToken().pipe(
       switchMap(token => {
         if (token) {
-          return this.http
-            .get(
-              `${this.firebaseDbUrl}/${
-                this.recipesCollectionName
-              }.json?auth=${token}`
-            )
-            .pipe(map(response => response.json()));
+          return this.httpClient.get<Recipe[]>(
+            `${this.firebaseDbUrl}/${
+              this.recipesCollectionName
+            }.json?auth=${token}`
+          );
         } else {
           return of([]);
         }
       })
+    ); */
+    return this.httpClient.get<Recipe[]>(
+      `${this.firebaseDbUrl}/${this.recipesCollectionName}.json`
     );
   }
 }

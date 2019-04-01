@@ -1,11 +1,13 @@
-import { Subscription } from "rxjs";
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 
-import { Ingredient } from "./../../shared/ingredient.model";
-import { RecipeService } from "./../../shared/recipe.service";
-import { ShoppingListService } from "./../../shared/shopping-list.service";
-import { Recipe } from "./../recipe-list/recipe-item/recipe.model";
+import { Ingredient } from './../../shared/ingredient.model';
+import { RecipeService } from './../../shared/recipe.service';
+import * as ShoppingListActions from './../../shopping-list/store/shopping-list.actions';
+import * as fromShoppingList from './../../shopping-list/store/shopping-list.reducers';
+import { Recipe } from './../recipe-list/recipe-item/recipe.model';
 
 @Component({
   selector: "app-recipe-details",
@@ -13,14 +15,13 @@ import { Recipe } from "./../recipe-list/recipe-item/recipe.model";
   styleUrls: ["./recipe-details.component.css"]
 })
 export class RecipeDetailsComponent implements OnInit, OnDestroy {
-  //@Input('chosenRecipe') chosenRecipe:Recipe
   recipe: Recipe;
   recipeId: number;
   subscription: Subscription;
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
-    private shoppingListService: ShoppingListService
+    private store: Store<fromShoppingList.AppState>
   ) {}
 
   ngOnInit() {
@@ -36,7 +37,7 @@ export class RecipeDetailsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
   addIngredients(ingredients: Ingredient[]) {
-    this.shoppingListService.addIngredients(ingredients);
+    this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
   deleteRecipe() {
     this.recipeService.deleteRecipe(this.recipeId);

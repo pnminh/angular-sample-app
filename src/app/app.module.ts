@@ -24,6 +24,8 @@ import { TodoItemComponent } from "./todo/todo-item/todo-item.component";
 import { TodoComponent } from "./todo/todo.component";
 import { FirebaseHttpInterceptor } from "./shared/http.interceptor";
 import { LoggingInterceptor } from "./shared/logging.interceptor";
+import { StoreModule } from "@ngrx/store";
+import { shoppingListReducer } from "./shopping-list/store/shopping-list.reducers";
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { LoggingInterceptor } from "./shared/logging.interceptor";
     HttpClientModule,
     SharedModule,
     ShoppingListModule,
-    CoreModule
+    CoreModule,
+    StoreModule.forRoot({ shoppingList: shoppingListReducer })
   ],
   providers: [
     RecipeService,

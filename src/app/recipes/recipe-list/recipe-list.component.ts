@@ -1,7 +1,10 @@
-import { Observable } from "rxjs";
+import * as RecipesActions from "./../store/recipes.actions";
 import { Component, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
-import { RecipeService } from "./../../shared/recipe.service";
+import * as fromRecipes from "../store/recipes.reducers";
 import { Recipe } from "./recipe-item/recipe.model";
 
 @Component({
@@ -11,8 +14,18 @@ import { Recipe } from "./recipe-item/recipe.model";
 })
 export class RecipeListComponent implements OnInit {
   recipes$: Observable<Recipe[]>;
-  constructor(private recipeService: RecipeService) {
-    this.recipes$ = this.recipeService.getRecipes();
+  constructor(
+    /* private recipeService: RecipeService */ private recipesStore: Store<
+      fromRecipes.FeatureState
+    >
+  ) {
+    //this.recipes$ = this.recipeService.getRecipes();
+    this.recipesStore.dispatch(new RecipesActions.StartRecipesFetching());
+    this.recipes$ = this.recipesStore
+      .select("recipes")
+      .pipe(
+        map((recipesState: fromRecipes.RecipesState) => recipesState.recipes)
+      );
   }
 
   ngOnInit() {}

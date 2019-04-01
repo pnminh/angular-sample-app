@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-import { RecipeService } from './../shared/recipe.service';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-recipes",
@@ -9,11 +6,8 @@ import { RecipeService } from './../shared/recipe.service';
   styleUrls: ["./recipes.component.css"]
 })
 export class RecipesComponent implements OnInit {
-  constructor(
-    private route: ActivatedRoute,
-    private recipeService: RecipeService
-  ) {}
+  constructor() {}
   ngOnInit() {
-    console.log('RecipesComponent loaded')
+    console.log("RecipesComponent loaded");
   }
 }

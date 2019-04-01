@@ -6,7 +6,7 @@ import { Subscription } from "rxjs";
 import { Ingredient } from "./../../shared/ingredient.model";
 import * as ShoppingListActions from "./../store/shopping-list.actions";
 import * as fromShoppingList from "./../store/shopping-list.reducers";
-
+import * as fromApp from "../../shared/store/app.reducers";
 @Component({
   selector: "app-shopping-edit",
   templateUrl: "./shopping-edit.component.html",
@@ -18,7 +18,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   isEditing = false;
   subscription: Subscription;
   _editIngredientId: number;
-  constructor(private store: Store<fromShoppingList.AppState>) {
+  constructor(private store: Store<fromApp.AppState>) {
     this.shoppingListForm = new FormGroup({
       name: new FormControl(null, Validators.required),
       amount: new FormControl(null, [

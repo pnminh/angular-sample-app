@@ -6,6 +6,7 @@ import { map } from "rxjs/operators";
 import { Ingredient } from "./../shared/ingredient.model";
 import * as ShoppingListActions from "./store/shopping-list.actions";
 import * as fromShoppingList from "./store/shopping-list.reducers";
+import * as fromApp from "../shared/store/app.reducers";
 
 @Component({
   selector: "app-shopping-list",
@@ -15,7 +16,7 @@ import * as fromShoppingList from "./store/shopping-list.reducers";
 export class ShoppingListComponent implements OnInit {
   ingredients$: Observable<Ingredient[]>;
   selectedIngredientId: number;
-  constructor(private store: Store<fromShoppingList.AppState>) {}
+  constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
     this.ingredients$ = this.store

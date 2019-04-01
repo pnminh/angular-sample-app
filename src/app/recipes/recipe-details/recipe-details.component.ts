@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { Subscription } from "rxjs";
 
-import { Ingredient } from './../../shared/ingredient.model';
-import { RecipeService } from './../../shared/recipe.service';
-import * as ShoppingListActions from './../../shopping-list/store/shopping-list.actions';
-import * as fromShoppingList from './../../shopping-list/store/shopping-list.reducers';
-import { Recipe } from './../recipe-list/recipe-item/recipe.model';
+import { Ingredient } from "./../../shared/ingredient.model";
+import { RecipeService } from "./../../shared/recipe.service";
+import * as ShoppingListActions from "./../../shopping-list/store/shopping-list.actions";
+import * as fromApp from "../../shared/store/app.reducers";
+import { Recipe } from "./../recipe-list/recipe-item/recipe.model";
 
 @Component({
   selector: "app-recipe-details",
@@ -21,7 +21,7 @@ export class RecipeDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
-    private store: Store<fromShoppingList.AppState>
+    private store: Store<fromApp.AppState>
   ) {}
 
   ngOnInit() {

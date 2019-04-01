@@ -1,7 +1,11 @@
+import { AuthEffects } from './auth/store/auth.effects';
+import { reducers } from "./shared/store/app.reducers";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { StoreModule } from "@ngrx/store";
+
 import { AppComponent } from "./app.component";
 import { AuthModule } from "./auth/auth.module";
 import { CoreModule } from "./core/core.module";
@@ -15,6 +19,8 @@ import { LocalRefComponent } from "./local-ref/local-ref.component";
 import { NgContentRefChildComponent } from "./ng-content-ref/ng-content-ref-child/ng-content-ref-child.component";
 import { NgContentRefComponent } from "./ng-content-ref/ng-content-ref.component";
 import { ServerComponent } from "./server/server.component";
+import { FirebaseHttpInterceptor } from "./shared/http.interceptor";
+import { LoggingInterceptor } from "./shared/logging.interceptor";
 import { RecipeService } from "./shared/recipe.service";
 import { SharedModule } from "./shared/shared.module";
 import { ToggleDirective } from "./shared/toggle.directive";
@@ -22,11 +28,10 @@ import { ShoppingListModule } from "./shopping-list/shopping-list.module";
 import { TodoControlComponent } from "./todo/todo-control/todo-control.component";
 import { TodoItemComponent } from "./todo/todo-item/todo-item.component";
 import { TodoComponent } from "./todo/todo.component";
-import { FirebaseHttpInterceptor } from "./shared/http.interceptor";
-import { LoggingInterceptor } from "./shared/logging.interceptor";
-import { StoreModule } from "@ngrx/store";
-import { shoppingListReducer } from "./shopping-list/store/shopping-list.reducers";
-
+import { environment } from "../environments/environment";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { EffectsModule } from '@ngrx/effects';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +60,10 @@ import { shoppingListReducer } from "./shopping-list/store/shopping-list.reducer
     SharedModule,
     ShoppingListModule,
     CoreModule,
-    StoreModule.forRoot({ shoppingList: shoppingListReducer })
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreRouterConnectingModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : null
   ],
   providers: [
     RecipeService,

@@ -1,9 +1,5 @@
 import { Ingredient } from "../../shared/ingredient.model";
 import * as ShoppingListActions from "./shopping-list.actions";
-
-export interface AppState {
-  shoppingList: ShoppingListState;
-}
 const initialState: ShoppingListState = {
   ingredients: [new Ingredient("Apple", 1), new Ingredient("Mango", 2)],
   editId: null

@@ -44,7 +44,7 @@ import { LoggingInterceptor } from "./shared/logging.interceptor";
     ToggleDirective
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     //need to move the child route module first before the route for root
     /* RecipesModule, */
     AuthModule,

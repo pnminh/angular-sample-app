@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
@@ -24,6 +25,7 @@ import { TodoItemComponent } from "./todo/todo-item/todo-item.component";
 import { TodoComponent } from "./todo/todo.component";
 import { FirebaseHttpInterceptor } from "./shared/http.interceptor";
 import { LoggingInterceptor } from "./shared/logging.interceptor";
+import { TestAnimationComponent } from './test-animation/test-animation.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { LoggingInterceptor } from "./shared/logging.interceptor";
     BackgroupStyleDirective,
     AdvancedBackgroundStyleDirective,
     RepeatDirective,
-    ToggleDirective
+    ToggleDirective,
+    TestAnimationComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { LoggingInterceptor } from "./shared/logging.interceptor";
     HttpClientModule,
     SharedModule,
     ShoppingListModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [
     RecipeService,

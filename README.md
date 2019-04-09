@@ -28,3 +28,4 @@ Here are the steps to build and deploy the sample app on Netlify:
 3. Select the repository to build
 4. Run *npm run build-prod*
 5. Select dist/ as a publish directory
+Link to the [demo](https://recipe-store.netlify.com/)

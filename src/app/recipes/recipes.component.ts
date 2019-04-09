@@ -16,4 +16,7 @@ export class RecipesComponent implements OnInit {
   ngOnInit() {
     console.log('RecipesComponent loaded')
   }
+  ngOnDestroy() {
+    console.log('RecipesComponent destroyed');
+  }
 }

@@ -1,6 +1,6 @@
 # Angular Development Sample App
 
-This project was created following the course *Angular 7-The Complete Guide*, taught by Maximilian Schwarzmüller. The project includes a set of small sample components(snippets) that touched all parts of the Angular features, and a complete application that leverage these features. These features include:
+This project was created following the course *Angular 7-The Complete Guide*, taught by Maximilian Schwarzmüller. The project includes a set of small sample components(snippets) that touched all parts of the Angular features, and a complete application that leverage these features, include:
 - Data binding
 - Directives
 - Pipes
